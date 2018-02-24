@@ -18,19 +18,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create(config('access.table_names.users'), function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('uuid');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('email')->unique();
-            $table->string('avatar_type')->default('gravatar');
-            $table->string('avatar_location')->nullable();
-            $table->string('password')->nullable();
-            $table->timestamp('password_changed_at')->nullable();
-            $table->tinyInteger('active')->default(1)->unsigned();
-            $table->string('confirmation_code')->nullable();
-            $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
-            $table->string('timezone')->default('UTC');
+            $table->string('dni_nie')->unique();
+            $table->string('password');
             $table->rememberToken();
+            $table->string('email')->unique();
+            $table->string('telephone')->unique();
+            $table->string('address')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('province')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
