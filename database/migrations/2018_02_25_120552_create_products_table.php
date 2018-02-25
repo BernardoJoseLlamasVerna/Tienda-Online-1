@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateProductsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class CreateStateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name_product')->nullable();
-            $table->string('description')->nullable();
-            $table->integer('units_on_stock');
-            $table->timestamps();
-            $table->softDeletes();
+          $table->increments('id');
+          $table->string('name_product')->nullable();
+          $table->string('description')->nullable();
+          $table->integer('units_on_stock');
+          $table->timestamps();
+          $table->softDeletes();
         });
     }
 

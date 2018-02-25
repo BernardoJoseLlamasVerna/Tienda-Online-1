@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateCategoriesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class CreateStateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name_category')->nullable();
-            $table->softDeletes();
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('name_category')->nullable();
+          $table->softDeletes();
+          $table->timestamps();
         });
     }
 

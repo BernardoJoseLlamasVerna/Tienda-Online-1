@@ -17,17 +17,14 @@ class CreateRolUsersTable extends Migration
           $table->increments('id');
           //FK:users
           $table->integer('user_id')->unsigned()->index();
+          $table->foreign('user_id')->references('id')->on('users');
           //FK:users
           //FK:rols
           $table->integer('rol_id')->unsigned()->index();
+          $table->foreign('rol_id')->references('id')->on('rols');
           //FK:users
           $table->timestamps();
           $table->softDeletes();
-        });
-
-        Schema::table('assigned_rols', function($table) {
-          $table->foreign('user_id')->references('id')->on('users');
-          $table->foreign('rol_id')->references('id')->on('rols');
         });
     }
 

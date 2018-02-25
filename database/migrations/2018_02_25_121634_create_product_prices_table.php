@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateProductPricesTable extends Migration
+class CreateProductPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +14,13 @@ class CreateStateProductPricesTable extends Migration
     public function up()
     {
         Schema::create('product_prices', function (Blueprint $table) {
-            $table->increments('id');
-            //FK:products
-            $table->integer('product_id')->unsigned()->index();
-            //FK:products
-            $table->integer('price');
-            $table->timestamps();
-        });
-
-        Schema::table('product_prices', function($table) {
+          $table->increments('id');
+          //FK:products
+          $table->integer('product_id')->unsigned()->index();
           $table->foreign('product_id')->references('id')->on('products');
+          //FK:products
+          $table->integer('price');
+          $table->timestamps();
         });
     }
 

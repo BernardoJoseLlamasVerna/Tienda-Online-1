@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateProductCategoriesTable extends Migration
+class CreateProductCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +14,17 @@ class CreateStateProductCategoriesTable extends Migration
     public function up()
     {
         Schema::create('product_categories', function (Blueprint $table) {
-            $table->increments('id');
-            //FK:products
-            $table->integer('product_id')->unsigned()->index();
-            //FK:products
-            //FK:categories
-            $table->integer('category_id')->unsigned()->index();
-            //FK:categories
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::table('product_categories', function($table) {
+          $table->increments('id');
+          //FK:products
+          $table->integer('product_id')->unsigned()->index();
           $table->foreign('product_id')->references('id')->on('products');
+          //FK:products
+          //FK:categories
+          $table->integer('category_id')->unsigned()->index();
           $table->foreign('category_id')->references('id')->on('categories');
+          //FK:categories
+          $table->softDeletes();
+          $table->timestamps();
         });
     }
 
